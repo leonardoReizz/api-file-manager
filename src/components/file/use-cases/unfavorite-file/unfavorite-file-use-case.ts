@@ -4,5 +4,8 @@ import { IUnfavoriteFileRequestDTO } from "./unfavorite-file-request-dto";
 export class UnfavoriteFileUseCase {
   constructor(private fileRepository: FileRepository) {}
 
-  async handle(data: IUnfavoriteFileRequestDTO) {}
+  async execute(data: IUnfavoriteFileRequestDTO) {
+    const id = await this.fileRepository.unfavoriteFile(data);
+    return id;
+  }
 }

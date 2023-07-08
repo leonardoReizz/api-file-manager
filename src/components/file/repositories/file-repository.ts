@@ -48,9 +48,7 @@ export class FileRepository {
       }
 
       for (const file of files) {
-        const nomePasta = file.split("_")[1];
-
-        if (nomePasta && file.startsWith(`${data.fileId}`)) {
+        if (file.startsWith(`${data.fileId}`)) {
           const oldPath = `${directoryPath}/${file}`;
           const newPath = `${directoryPath}/favorite_${file}`;
 
@@ -69,7 +67,12 @@ export class FileRepository {
   }
 
   async unfavoriteFile(data: any) {
-    const directoryPath = env.MAIN_DIR + data.userId + data.filePath;
+    let directoryPath = "";
+    if (data.folderId === "Root") {
+      directoryPath = env.MAIN_DIR + data.userId;
+    } else {
+      directoryPath = env.MAIN_DIR + data.userId + "/" + data.folderId;
+    }
 
     fs.readdir(directoryPath, (err, files) => {
       if (err) {
@@ -78,15 +81,15 @@ export class FileRepository {
       }
 
       for (const file of files) {
-        const nomePasta = file.split("_")[1];
-
-        if (nomePasta && file.startsWith(`${data.fileId}`)) {
+        console.log(file, "achei", data.fileId);
+        if (file.startsWith(`favorite_${data.fileId}`)) {
           const oldPath = `${directoryPath}/${file}`;
-          const newPath = `${directoryPath}/favorite_${file}`;
+          const newFileName = `${file.split("_")[1]}_${file.split("_")[2]}`;
+          const newPath = `${directoryPath}/${newFileName}`;
 
           fs.rename(oldPath, newPath, (err) => {
             if (err) {
-              console.error("Error favorite file:", err);
+              console.error("Error unfavorite file:", err);
             }
           });
 
