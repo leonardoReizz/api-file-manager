@@ -8,7 +8,7 @@ import { unpinFolderController } from "../components/folders/use-cases/unpin-fol
 const folderRoutes = Router();
 
 folderRoutes.post(
-  "/folder",
+  "/",
   verifyJWT,
   (request: Request, response: Response, next: NextFunction) => {
     return createFolderController.handle(request, response, next);
@@ -16,7 +16,7 @@ folderRoutes.post(
 );
 
 folderRoutes.delete(
-  "/folder/:folderId",
+  "/:folderId",
   verifyJWT,
   (request: Request, response: Response, next: NextFunction) => {
     return deleteFolderController.handle(request, response, next);
@@ -24,7 +24,7 @@ folderRoutes.delete(
 );
 
 folderRoutes.post(
-  "/folder/pin/:folderId",
+  "/pin/:folderId",
   verifyJWT,
   (request: Request, response: Response, next: NextFunction) => {
     return pinFolderController.handle(request, response, next);
@@ -32,7 +32,7 @@ folderRoutes.post(
 );
 
 folderRoutes.post(
-  "/folder/unpin/:folderId",
+  "/unpin/:folderId",
   verifyJWT,
   (request: Request, response: Response, next: NextFunction) => {
     return unpinFolderController.handle(request, response, next);
