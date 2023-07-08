@@ -1,13 +1,13 @@
 import { NextFunction, Request, Response, Router } from "express";
 import { verifyJWT } from "../middlewares/verify-jwt";
-import { createFolderController } from "../components/upload/use-cases/create-folder";
-import { deleteFolderController } from "../components/upload/use-cases/delete-folder";
-import { pinFolderController } from "../components/upload/use-cases/pin-folder";
-import { unpinFolderController } from "../components/upload/use-cases/unpin-folder";
+import { createFolderController } from "../components/folders/use-cases/create-folder";
+import { deleteFolderController } from "../components/folders/use-cases/delete-folder";
+import { pinFolderController } from "../components/folders/use-cases/pin-folder";
+import { unpinFolderController } from "../components/folders/use-cases/unpin-folder";
 
-const fileRoutes = Router();
+const folderRoutes = Router();
 
-fileRoutes.post(
+folderRoutes.post(
   "/folder",
   verifyJWT,
   (request: Request, response: Response, next: NextFunction) => {
@@ -15,7 +15,7 @@ fileRoutes.post(
   }
 );
 
-fileRoutes.delete(
+folderRoutes.delete(
   "/folder/:folderId",
   verifyJWT,
   (request: Request, response: Response, next: NextFunction) => {
@@ -23,7 +23,7 @@ fileRoutes.delete(
   }
 );
 
-fileRoutes.post(
+folderRoutes.post(
   "/folder/pin/:folderId",
   verifyJWT,
   (request: Request, response: Response, next: NextFunction) => {
@@ -31,7 +31,7 @@ fileRoutes.post(
   }
 );
 
-fileRoutes.post(
+folderRoutes.post(
   "/folder/unpin/:folderId",
   verifyJWT,
   (request: Request, response: Response, next: NextFunction) => {
@@ -39,4 +39,4 @@ fileRoutes.post(
   }
 );
 
-export { fileRoutes };
+export { folderRoutes };

@@ -17,9 +17,7 @@ export class FavoriteFileController {
       );
 
       const fileIdSchema = z.string();
-      const fileId = fileIdSchema.parse(
-        (request as AuthenticatedRequest).userId
-      );
+      const fileId = fileIdSchema.parse(request.params.fileId);
 
       await this.favoriteFileUseCase.execute({ userId, folderId, fileId });
       return response.status(200).json({ message: "message" });
