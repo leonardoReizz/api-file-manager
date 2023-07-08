@@ -52,15 +52,25 @@ export class FolderRepository implements t.IFolderRepositoryInterface {
 
       if (fileStats.isFile()) {
         const fileExtension = path.extname(file);
+        let fileObject;
 
-        const fileId = file.split("_")[0];
-        const fileName = file.split("_").pop();
-        const fileObject = {
-          file,
-          fileId,
-          fileName,
-          extension: fileExtension,
-        };
+        if (file.split("_")[0] === "favorite") {
+          fileObject = {
+            file,
+            fileId: file.split("_")[1],
+            fileName: file.split("_").pop() || "",
+            favorited: true,
+            extension: fileExtension,
+          };
+        } else {
+          fileObject = {
+            file,
+            fileId: file.split("_")[0],
+            fileName: file.split("_").pop() || "",
+            favorited: false,
+            extension: fileExtension,
+          };
+        }
 
         rootFolderObject.files.push(fileObject);
       }
