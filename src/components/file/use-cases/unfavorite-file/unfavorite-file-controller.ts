@@ -19,12 +19,12 @@ export class UnfavoriteFileController {
       const fileIdSchema = z.string();
       const fileId = fileIdSchema.parse(request.params.fileId);
 
-      const id = await this.unfavoriteFileUseCase.execute({
+      await this.unfavoriteFileUseCase.execute({
         userId,
         folderId,
         fileId,
       });
-      return response.status(200).json({ message: id });
+      return response.status(200).json({ message: { fileId, folderId } });
     } catch (error) {
       next(error);
     }
