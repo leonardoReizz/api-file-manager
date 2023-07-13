@@ -115,14 +115,25 @@ export class FolderRepository implements t.IFolderRepositoryInterface {
 
           if (fileStats.isFile()) {
             const fileExtension = path.extname(file);
-            const fileId = file.split("_")[0];
-            const fileName = file.split("_").pop() || "";
-            const fileObject = {
-              file,
-              fileId,
-              fileName,
-              extension: fileExtension,
-            };
+            let fileObject: any;
+
+            if (file.split("_")[0] === "favorite") {
+              fileObject = {
+                file,
+                fileId: file.split("_")[1],
+                fileName: file.split("_").pop() || "",
+                favorited: true,
+                extension: fileExtension,
+              };
+            } else {
+              fileObject = {
+                file,
+                fileId: file.split("_")[0],
+                fileName: file.split("_").pop() || "",
+                favorited: false,
+                extension: fileExtension,
+              };
+            }
 
             folderObject.files.push(fileObject);
           }
@@ -147,7 +158,6 @@ export class FolderRepository implements t.IFolderRepositoryInterface {
       for (const arquivo of arquivos) {
         const nomePasta = arquivo.split("_")[1]; // Extrai o nome da pasta do nome do arquivo
 
-        console.log(nomePasta);
         if (nomePasta && arquivo.startsWith(`${data.folderId}`)) {
           const oldPath = `${directoryPath}/${arquivo}`;
           const newPath = `${directoryPath}/pinned_${arquivo}`;
