@@ -41,27 +41,38 @@ export class FileRepository implements t.IFileRepository {
   async favoriteFile(data: t.IFavoriteFileData) {
     const directoryPath = env.MAIN_DIR + data.userId;
 
-    fs.readdir(directoryPath, (err, files) => {
-      if (err) {
-        console.error("Erro ao ler o diretório:", err);
-        return;
-      }
-
-      for (const file of files) {
-        if (file.startsWith(`${data.fileId}`)) {
+    if (data.folderId === "Root") {
+      fs.readdirSync(directoryPath).forEach((file) => {
+        if (file.startsWith(data.fileId)) {
           const oldPath = `${directoryPath}/${file}`;
           const newPath = `${directoryPath}/favorite_${file}`;
-
           fs.rename(oldPath, newPath, (err) => {
             if (err) {
               console.error("Error favorite file:", err);
             }
           });
-
-          return;
         }
-      }
-    });
+      });
+    } else {
+      fs.readdirSync(directoryPath).forEach((folder) => {
+        if (folder.includes(data.folderId)) {
+          const folderPath = path.join(directoryPath, folder);
+          if (fs.statSync(folderPath).isDirectory()) {
+            fs.readdirSync(folderPath).forEach((file) => {
+              if (file.includes(data.fileId)) {
+                const oldPath = `${folderPath}/${file}`;
+                const newPath = `${folderPath}/favorite_${file}`;
+                fs.rename(oldPath, newPath, (err) => {
+                  if (err) {
+                    console.error("Error favorite file:", err);
+                  }
+                });
+              }
+            });
+          }
+        }
+      });
+    }
 
     return data.fileId;
   }
@@ -69,7 +80,6 @@ export class FileRepository implements t.IFileRepository {
   async delete(data: t.IDeleteFileData) {
     const directoryPath = env.MAIN_DIR + data.userId;
 
-    console.log(data);
     if (data.folderId === "Root") {
       fs.readdirSync(directoryPath).forEach((file) => {
         if (file.startsWith(data.fileId)) {
@@ -97,22 +107,11 @@ export class FileRepository implements t.IFileRepository {
   }
 
   async unfavoriteFile(data: any) {
-    let directoryPath = "";
+    const directoryPath = env.MAIN_DIR + data.userId;
+
     if (data.folderId === "Root") {
-      directoryPath = env.MAIN_DIR + data.userId;
-    } else {
-      directoryPath = env.MAIN_DIR + data.userId + "/" + data.folderId;
-    }
-
-    fs.readdir(directoryPath, (err, files) => {
-      if (err) {
-        console.error("Erro ao ler o diretório:", err);
-        return;
-      }
-
-      for (const file of files) {
-        console.log(file, "achei", data.fileId);
-        if (file.startsWith(`favorite_${data.fileId}`)) {
+      fs.readdirSync(directoryPath).forEach((file) => {
+        if (file.includes(data.fileId)) {
           const oldPath = `${directoryPath}/${file}`;
           const newFileName = `${file.split("_")[1]}_${file.split("_")[2]}`;
           const newPath = `${directoryPath}/${newFileName}`;
@@ -122,11 +121,32 @@ export class FileRepository implements t.IFileRepository {
               console.error("Error unfavorite file:", err);
             }
           });
-
-          return;
         }
-      }
-    });
+      });
+    } else {
+      fs.readdirSync(directoryPath).forEach((folder) => {
+        if (folder.includes(data.folderId)) {
+          const folderPath = path.join(directoryPath, folder);
+          if (fs.statSync(folderPath).isDirectory()) {
+            fs.readdirSync(folderPath).forEach((file) => {
+              if (file.includes(data.fileId)) {
+                const oldPath = `${folderPath}/${file}`;
+                const newFileName = `${file.split("_")[1]}_${
+                  file.split("_")[2]
+                }`;
+                const newPath = `${folderPath}/${newFileName}`;
+
+                fs.rename(oldPath, newPath, (err) => {
+                  if (err) {
+                    console.error("Error unfavorite file:", err);
+                  }
+                });
+              }
+            });
+          }
+        }
+      });
+    }
 
     return data.file;
   }
