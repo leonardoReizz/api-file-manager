@@ -10,4 +10,5 @@ export interface UserRepositoryInterface {
   create(data: ICreateUserData): Promise<UserProps>;
   findByEmail(email: string): Promise<UserProps | null>;
   findById(userId: string): Promise<UserProps | null>;
+  update(data: Partial<UserProps>): Promise<Partial<UserProps> | null>;
 }
