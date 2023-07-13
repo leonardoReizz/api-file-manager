@@ -24,7 +24,7 @@ export class CreateUserUseCase {
 
     const dir = env.MAIN_DIR + `${create._id}`;
 
-    fs.mkdirSync(dir); // TODO: error?
+    fs.mkdirSync(dir);
 
     return { user: create };
   }
