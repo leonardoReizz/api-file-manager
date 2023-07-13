@@ -4,7 +4,7 @@ import fs from "fs";
 import path from "path";
 import { env } from "../../../env";
 
-export class FileRepository {
+export class FileRepository implements t.IFileRepository {
   async saveFile(data: t.ISaveFileData): Promise<string> {
     const tempPath = data.file.path;
     const id = uuid();
@@ -64,6 +64,36 @@ export class FileRepository {
     });
 
     return data.fileId;
+  }
+
+  async delete(data: t.IDeleteFileData) {
+    const directoryPath = env.MAIN_DIR + data.userId;
+
+    console.log(data);
+    if (data.folderId === "Root") {
+      fs.readdirSync(directoryPath).forEach((file) => {
+        if (file.startsWith(data.fileId)) {
+          const filePath = path.join(directoryPath, file);
+          fs.unlinkSync(filePath);
+        }
+      });
+    } else {
+      fs.readdirSync(directoryPath).forEach((folder) => {
+        if (folder.includes(data.folderId)) {
+          const folderPath = path.join(directoryPath, folder);
+          if (fs.statSync(folderPath).isDirectory()) {
+            fs.readdirSync(folderPath).forEach((file) => {
+              if (file.includes(data.fileId)) {
+                const filePath = path.join(folderPath, file);
+                fs.unlinkSync(filePath);
+              }
+            });
+          }
+        }
+      });
+    }
+
+    return { fileId: data.fileId, folderId: data.folderId };
   }
 
   async unfavoriteFile(data: any) {

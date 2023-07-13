@@ -5,6 +5,7 @@ import { listFilesController } from "../components/file/use-cases/list-files";
 import { verifyJWT } from "../middlewares/verify-jwt";
 import { favoriteFileController } from "../components/file/use-cases/favorite-file";
 import { unfavoriteFileController } from "../components/file/use-cases/unfavorite-file";
+import { deleteFileController } from "../components/file/use-cases/delete-file";
 
 const upload = multer({ dest: "uploads/" });
 
@@ -41,4 +42,13 @@ fileRoutes.put(
     return unfavoriteFileController.handle(request, response, next);
   }
 );
+
+fileRoutes.delete(
+  "/:folderId/:fileId",
+  verifyJWT,
+  (request: Request, response: Response, next: NextFunction) => {
+    return deleteFileController.handle(request, response, next);
+  }
+);
+
 export { fileRoutes };
