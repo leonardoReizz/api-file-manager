@@ -23,7 +23,7 @@ folderRoutes.delete(
   }
 );
 
-folderRoutes.post(
+folderRoutes.put(
   "/pin/:folderId",
   verifyJWT,
   (request: Request, response: Response, next: NextFunction) => {
@@ -31,7 +31,7 @@ folderRoutes.post(
   }
 );
 
-folderRoutes.post(
+folderRoutes.put(
   "/unpin/:folderId",
   verifyJWT,
   (request: Request, response: Response, next: NextFunction) => {
