@@ -1,23 +1,23 @@
-export interface ISaveFileData {
+export interface SaveFileData {
   folderId: string;
   file: any;
   userId: string;
 }
 
-export interface IFavoriteFileData {
+export interface FavoriteFileData {
   userId: string;
   folderId: string;
   fileId: string;
 }
 
-export interface IDeleteFileData {
+export interface DeleteFileData {
   fileId: string;
   userId: string;
   folderId: string;
 }
 
-export interface IFileRepository {
-  saveFile(data: ISaveFileData): Promise<any>;
-  favoriteFile(data: IFavoriteFileData): Promise<any>;
-  delete(data: IDeleteFileData): Promise<{ folderId: string; fileId: string }>;
+export interface FileRepository {
+  saveFile(data: SaveFileData): Promise<any>;
+  favoriteFile(data: FavoriteFileData): Promise<any>;
+  delete(data: DeleteFileData): Promise<{ folderId: string; fileId: string }>;
 }
