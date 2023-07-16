@@ -17,12 +17,12 @@ export class SaveFileController {
       );
 
       if (request.file) {
-        const id = await this.saveFileUseCase.execute({
+        const file = await this.saveFileUseCase.execute({
           folderId,
           file: request.file,
           userId,
         });
-        return response.status(200).json({ message: { folderId: id } });
+        return response.status(200).json({ message: file });
       } else {
         throw new Error("Invalid file");
       }
