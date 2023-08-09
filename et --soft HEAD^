@@ -1,0 +1,132 @@
+[33mcommit e706066a461bac35af1f41f4aaee7b7909bacf61[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: Leonardo Reis <amarantee.reis@gmail.com>
+Date:   Sun Jul 16 17:25:53 2023 -0300
+
+    feat: change functions returns
+
+[33mcommit 79e02a169ba69930abab196c229be07370edb297[m
+Author: Leonardo Reis <amarantee.reis@gmail.com>
+Date:   Sun Jul 16 17:25:39 2023 -0300
+
+    feat: swagger routes
+
+[33mcommit 349eaa4d5b96500f7ebdfc9761c8910d10c14848[m
+Author: Leonardo Reis <amarantee.reis@gmail.com>
+Date:   Sun Jul 16 17:25:31 2023 -0300
+
+    feat: change interfaces name
+
+[33mcommit c9fd522c80301aafc13aa59ff80d234dc4ac0c47[m
+Author: Leonardo Reis <amarantee.reis@gmail.com>
+Date:   Sun Jul 16 17:25:12 2023 -0300
+
+    fix: import json files
+
+[33mcommit c37b9acd511c9e4e4eb82e4c45c7adb1de2ac269[m
+Author: Leonardo Reis <amarantee.reis@gmail.com>
+Date:   Sun Jul 16 17:25:02 2023 -0300
+
+    feat: swagger configuration
+
+[33mcommit fd0cffd156fd43e7354bbd7a99de6c9587a92e86[m
+Author: Leonardo Reis <amarantee.reis@gmail.com>
+Date:   Sun Jul 16 17:24:53 2023 -0300
+
+    feat: swagger doc
+
+[33mcommit 809627c9cefc1e1967ccf0207be67920e5ee94cf[m
+Author: Leonardo Reis <amarantee.reis@gmail.com>
+Date:   Sun Jul 16 17:24:45 2023 -0300
+
+    feat: add swagger, swagget-auto-gen and coverage
+
+[33mcommit f8d4222d5cbe72967b2efa3ccdbb15feedb80409[m
+Author: Leonardo Reis <amarantee.reis@gmail.com>
+Date:   Sun Jul 16 17:24:24 2023 -0300
+
+    feat: update post routes to method put
+
+[33mcommit a77ac1b25773c008c84843bcade25833f504ecc1[m
+Merge: 82c1ec0 477df77
+Author: Leonardo Reis <amarantee.reis@gmail.com>
+Date:   Sun Jul 16 17:19:13 2023 -0300
+
+    Merge branch 'main' of https://github.com/leonardoReizz/api-file-manager
+
+[33mcommit 477df775c989b344d23f6a00f746071cecf24cf4[m
+Author: Leonardo Reis <amarantee.reis@gmail.com>
+Date:   Sun Jul 16 16:54:23 2023 -0300
+
+    Create README.md
+
+[33mcommit 82c1ec010debd0366753a373c300ff7ac12561d2[m
+Author: Leonardo Reis <amarantee.reis@gmail.com>
+Date:   Thu Jul 13 09:51:34 2023 -0300
+
+    fix: return  favorited files
+
+[33mcommit afc5f8431ffd57e166e22a123a789af7a554d5f0[m
+Author: Leonardo Reis <amarantee.reis@gmail.com>
+Date:   Thu Jul 13 09:51:25 2023 -0300
+
+    fix: favorite file
+
+[33mcommit 5b5df7bafb1047ff80b04fef676d9feed2ff87b6[m
+Author: Leonardo Reis <amarantee.reis@gmail.com>
+Date:   Wed Jul 12 21:29:02 2023 -0300
+
+    remove comment
+
+[33mcommit 56f7819c220df086eb1f2e80a030a04f1b0799fe[m
+Author: Leonardo Reis <amarantee.reis@gmail.com>
+Date:   Wed Jul 12 21:28:52 2023 -0300
+
+    feat: change user data
+
+[33mcommit 17491e500658929abe539fe80ec2fa7f6a2d714f[m
+Author: Leonardo Reis <amarantee.reis@gmail.com>
+Date:   Wed Jul 12 21:28:02 2023 -0300
+
+    feat: delete file
+
+[33mcommit f0f66a353450b397293f8600fc62eee83cd15750[m
+Author: Leonardo Reis <amarantee.reis@gmail.com>
+Date:   Sat Jul 8 17:48:22 2023 -0300
+
+    remove unnecessary const
+
+[33mcommit 56677607100d2ce41c682b6782327b4fd61a13d1[m
+Author: Leonardo Reis <amarantee.reis@gmail.com>
+Date:   Sat Jul 8 17:48:15 2023 -0300
+
+    fix: response
+
+[33mcommit 1895749d12a0c012285cd28e571cbd997601896c[m
+Author: Leonardo Reis <amarantee.reis@gmail.com>
+Date:   Sat Jul 8 17:48:06 2023 -0300
+
+    fix: routes
+
+[33mcommit 39ff01366a2b04608f2f10276fa6aabf22b04419[m
+Author: Leonardo Reis <amarantee.reis@gmail.com>
+Date:   Sat Jul 8 15:50:43 2023 -0300
+
+    feat: return files favorited
+
+[33mcommit f0c4ba866f3f3f07a06e5a5d0729be3305a29049[m
+Author: Leonardo Reis <amarantee.reis@gmail.com>
+Date:   Sat Jul 8 15:50:32 2023 -0300
+
+    feat: unfavorite files
+
+[33mcommit 138303413930094eb3031a5e56efec68007274c1[m
+Author: Leonardo Reis <amarantee.reis@gmail.com>
+Date:   Sat Jul 8 12:42:39 2023 -0300
+
+    fix: file and folder routes
+
+[33mcommit c3cf5b23ea95b122905e48246dab9da5ff65a3de[m
+Author: Leonardo Reis <amarantee.reis@gmail.com>
+Date:   Sat Jul 8 12:01:48 2023 -0300
+
+    initial commit
